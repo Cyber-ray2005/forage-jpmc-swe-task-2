@@ -1,0 +1,46 @@
+From 35817f25603a1ca641b40f8d6f3a5e5acade396a Mon Sep 17 00:00:00 2001
+From: Cyber-ray2005 <yeboahray03@gmail.com>
+Date: Sun, 24 Mar 2024 16:39:30 +0400
+Subject: [PATCH] updated graph
+
+---
+ src/Graph.tsx | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/src/Graph.tsx b/src/Graph.tsx
+index 39e9ab9..ec1036f 100644
+--- a/src/Graph.tsx
++++ b/src/Graph.tsx
+@@ -23,7 +23,7 @@ interface PerspectiveViewerElement extends HTMLElement {
+  * parsed from its parent through data property.
+  */
+ class Graph extends Component<IProps, {}> {
+-  // Perspective table
++    // Perspective table
+   table: Table | undefined;
+ 
+   render() {
+@@ -51,13 +51,14 @@ class Graph extends Component<IProps, {}> {
+       elem.load(this.table);
+       elem.setAttribute('view', 'y_line');
+       elem.setAttribute('column-pivots', '["stock"]');
+-      elem.setAttribute('row_pivots', '["timestamp"]');
++      elem.setAttribute('row-pivots', '["timestamp"]');
+       elem.setAttribute('columns', '["top_ask_price"]');
+-      elem.setAttribute('aggregates', `
+-        {"stock": "distinct count", 
+-        "top_ask_price": "avg",
+-        "top_bid_price": "avg",
+-        "timestamp": "distinct count"}`);
++      elem.setAttribute('aggregates', JSON.stringify({
++        stock: 'distinctcount',
++        top_ask_price: 'avg',
++        top_bid_price: 'avg',
++        timestamp: 'distinct count',
++      }));
+     }
+   }
+ 
+-- 
+2.39.3 (Apple Git-146)
+
